@@ -3,20 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Hands.Gestures;
 using UnityEngine.XR.Hands.Samples.Gestures.DebugTools;
+using TMPro;
 
 public class KeyboardHandler : MonoBehaviour
 {
-    public List<float> leftTipCurls;
-    public List<float> rightTipCurls;
+    public float averageCurlLeft;
+    public float averageCurlRight;
     public CurlDetection leftDetect;
     public CurlDetection rightDetect;
     //these six vars are all similar data.  Might be able to ditch one with some clever destructive uses
-    public float leftMax;
-    public float rightMax;
-    public int leftMaxIndex;
-    public int rightMaxIndex;
-    public int lastChordLeft;
-    public int lastChordRight;
+    public List<float> tipCurls;
+    public List<int> inputs;
+    public List<int> lastChord;
+    public TextMeshPro display;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,42 +27,70 @@ public class KeyboardHandler : MonoBehaviour
     { 
         //Indexes are reversed from the OpenXR standard so that pinkies are 0 and thumbs are 4
         for(int i = 0; i < leftDetect.tipCurls.Count; i++) {
-            leftTipCurls[i] = leftDetect.tipCurls[4-i];
+            tipCurls[i] = leftDetect.tipCurls[4-i];
+            tipCurls[i+5] = rightDetect.tipCurls[4-i];
+            averageCurlLeft += tipCurls[i];
+            averageCurlRight += tipCurls[i+5];
         }
-        for(int i = 0; i < rightDetect.tipCurls.Count; i++) {
-            rightTipCurls[i] = rightDetect.tipCurls[4-i];
+        averageCurlLeft /= 5;
+        averageCurlRight /= 5;
+        inputs.Clear();
+        for(int i = 0; i < 5; i++) {
+            if(tipCurls[i] > averageCurlLeft + 0.15f){
+                inputs.Add(i);
+            }
+            if(tipCurls[i+5] > averageCurlRight + 0.15f){
+                inputs.Add(i+5);
+            }
         }
-        leftMax = Mathf.Max(leftTipCurls.ToArray());
-        if(leftMax > Average(leftTipCurls) + 0.2f){
-            leftMaxIndex = leftTipCurls.IndexOf(leftMax);
+        if(inputs.Count == 0){
+            lastChord.Clear();
         } else {
-            leftMaxIndex = -1;
-            lastChordLeft = -1;
+            if(!CheckEqual(inputs,lastChord)){
+                Chord(inputs);
+            }
         }
-        rightMax = Mathf.Max(rightTipCurls.ToArray());
-        if(rightMax > Average(rightTipCurls) + 0.2f){
-            rightMaxIndex = rightTipCurls.IndexOf(rightMax);
-        } else {
-            rightMaxIndex = -1;
-            lastChordRight = -1;
+        // leftMax = Mathf.Max(leftTipCurls.ToArray());
+        // if(leftMax > Average(leftTipCurls) + 0.2f){
+        //     leftMaxIndex = leftTipCurls.IndexOf(leftMax);
+        // } else {
+        //     leftMaxIndex = -1;
+        //     lastChordLeft = -1;
+        // }
+        // rightMax = Mathf.Max(rightTipCurls.ToArray());
+        // if(rightMax > Average(rightTipCurls) + 0.2f){
+        //     rightMaxIndex = rightTipCurls.IndexOf(rightMax);
+        // } else {
+        //     rightMaxIndex = -1;
+        //     lastChordRight = -1;
+        // }
+        // if(leftMaxIndex > -1 && rightMaxIndex > -1 && (leftMaxIndex != lastChordLeft || rightMaxIndex != lastChordRight)){
+        //     Chord(leftMaxIndex, rightMaxIndex);
+        // }
+    }
+
+    void Chord(List<int> chordInputs)
+    {
+        lastChord.Clear();
+        foreach(int input in chordInputs){
+            lastChord.Add(input);
         }
-        if(leftMaxIndex > -1 && rightMaxIndex > -1 && (leftMaxIndex != lastChordLeft || rightMaxIndex != lastChordRight)){
-            Chord(leftMaxIndex, rightMaxIndex);
+        Debug.Log("Striking Chord");
+        display.text += "\nChord";
+        foreach(int input in chordInputs){
+            display.text += input.ToString();
         }
     }
-    void Chord(int leftInput, int rightInput)
+    public bool CheckEqual(List<int> list1, List<int> list2)
     {
-        lastChordLeft = leftInput;
-        lastChordRight = rightInput;
-        Debug.Log("Striking chord at:" + leftInput + rightInput);
-    }
-    public float Average(List<float> list)
-    {
-        float value = 0;
-        foreach(float item in list){
-            value += item;
+        if(list1.Count == list2.Count){
+            for(int i = 0; i < list1.Count; i++) {
+                if(list1[i] != list2[i]){
+                    return false;
+                }
+            }
+            return true;
         }
-        value /= list.Count;
-        return value;
+        return false;
     }
 }
