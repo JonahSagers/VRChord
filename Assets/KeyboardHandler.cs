@@ -13,9 +13,47 @@ public class KeyboardHandler : MonoBehaviour
     public CurlDetection rightDetect;
     //these six vars are all similar data.  Might be able to ditch one with some clever destructive uses
     public List<float> tipCurls;
-    public List<int> inputs;
-    public List<int> lastChord;
+    public string inputs;
+    public string lastChord;
     public TextMeshPro display;
+    public string inputBuffer;
+    public Dictionary<string, string> chords = new Dictionary<string, string>{
+        { "0", "a" },
+        { "1", "s" },
+        { "01", "w" },
+        { "2", "e" },
+        { "02", "x" },
+        { "12", "d" },
+        { "3", "t" },
+        { "03", "f" },
+        { "13", "c" },
+        { "23", "r" },
+        { "4", "n" },
+        { "04", "q" },
+        { "14", "j" },
+        { "24", "y" },
+        { "34", "b" },
+        { "5", "i" },
+        { "05", "z" },
+        { "15", "k" },
+        { "25", "," },
+        { "35", "v" },
+        { "45", "h" },
+        { "6", "o" },
+        { "06", "(" },
+        { "16", "." },
+        { "26", "-" },
+        { "36", "g" },
+        { "46", "u" },
+        { "56", "l" },
+        { "7", "p" },
+        { "07", "?" },
+        { "17", ")" },
+        { "37", "←" },
+        { "47", "m" },
+        { "57", "!" },
+        { "67", ";" },
+    };
     // Start is called before the first frame update
     void Start()
     {
@@ -24,31 +62,37 @@ public class KeyboardHandler : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
-        //Indexes are reversed from the OpenXR standard so that pinkies are 0 and thumbs are 4
+    {
+        inputs = "";
         for(int i = 0; i < leftDetect.tipCurls.Count; i++) {
-            tipCurls[i] = leftDetect.tipCurls[4-i];
+            tipCurls[i] = leftDetect.tipCurls[i];
             tipCurls[i+5] = rightDetect.tipCurls[4-i];
             averageCurlLeft += tipCurls[i];
             averageCurlRight += tipCurls[i+5];
         }
         averageCurlLeft /= 5;
         averageCurlRight /= 5;
-        inputs.Clear();
         for(int i = 0; i < 5; i++) {
             if(tipCurls[i] > averageCurlLeft + 0.15f){
-                inputs.Add(i);
+                inputs += i;
             }
             if(tipCurls[i+5] > averageCurlRight + 0.15f){
-                inputs.Add(i+5);
+                inputs += i+5;
             }
         }
-        if(inputs.Count == 0){
-            lastChord.Clear();
+        if(inputs== ""){
+            if(inputBuffer != "" && !lastChord.Contains(inputBuffer)){
+                Chord(inputBuffer);
+            }
+            inputBuffer = "";
+            lastChord = "";
         } else {
-            if(!CheckEqual(inputs,lastChord)){
+            if(!lastChord.Contains(inputs) && inputs.Length > 1){
                 Chord(inputs);
             }
+        }
+        if(inputs.Length == 1){
+            inputBuffer = inputs;
         }
         // leftMax = Mathf.Max(leftTipCurls.ToArray());
         // if(leftMax > Average(leftTipCurls) + 0.2f){
@@ -69,28 +113,17 @@ public class KeyboardHandler : MonoBehaviour
         // }
     }
 
-    void Chord(List<int> chordInputs)
+    void Chord(string chordInputs)
     {
-        lastChord.Clear();
-        foreach(int input in chordInputs){
-            lastChord.Add(input);
-        }
+        //had some pointer nonsense with this
+        lastChord = "";
+        lastChord += chordInputs;
+        inputBuffer = "";
         Debug.Log("Striking Chord");
-        display.text += "\nChord";
-        foreach(int input in chordInputs){
-            display.text += input.ToString();
-        }
-    }
-    public bool CheckEqual(List<int> list1, List<int> list2)
-    {
-        if(list1.Count == list2.Count){
-            for(int i = 0; i < list1.Count; i++) {
-                if(list1[i] != list2[i]){
-                    return false;
-                }
-            }
-            return true;
-        }
-        return false;
+        display.text += "\nChord: ";
+        display.text += chords[chordInputs];
+        display.text += " (";
+        display.text += chordInputs;
+        display.text += ")";
     }
 }
