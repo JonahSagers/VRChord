@@ -11,6 +11,8 @@ public class KeyboardHandler : MonoBehaviour
     public float averageCurlRight;
     public CurlDetection leftDetect;
     public CurlDetection rightDetect;
+    public bool leftFist;
+    public bool rightFist;
     //these six vars are all similar data.  Might be able to ditch one with some clever destructive uses
     public List<float> tipCurls;
     public string inputs;
@@ -125,5 +127,21 @@ public class KeyboardHandler : MonoBehaviour
         display.text += " (";
         display.text += chordInputs;
         display.text += ")";
+    }
+    public void LeftFist()
+    {
+        leftFist = true;
+    }
+    public void LeftFistEnd()
+    {
+        leftFist = false;
+    }
+    public void RightFist()
+    {
+        rightFist = true;
+    }
+    public void RightFistEnd()
+    {
+        rightFist = false;
     }
 }
