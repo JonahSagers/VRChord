@@ -20,7 +20,10 @@ public class KeyboardHandler : MonoBehaviour
     public Transform rightPos;
     public bool gestureLatch;
     public bool chordingEnabled;
+    //this list is 10 items long to allow for thumb inputs, but for this build I handle them separately
     public List<float> tipCurls;
+    public Coroutine delKey;
+    public bool spaceKey;
     public string inputs;
     public string lastChord;
     public TextMeshPro display;
@@ -75,20 +78,22 @@ public class KeyboardHandler : MonoBehaviour
     void Update()
     {
         if(leftFist && rightFist){
-            if(Vector3.Distance(leftPos.position,rightPos.position) < 0.15f && !gestureLatch){
+            float handDist = Vector3.Distance(leftPos.position,rightPos.position);
+            if(handDist < 0.12f && !gestureLatch){
                 if(chordingEnabled){
                     Disable();
                 } else {
                     Enable();
                 }
                 gestureLatch = true;
-            //can avoid checking position twice if you weren't allergic to placeholder variables
-            } else if(Vector3.Distance(leftPos.position,rightPos.position) > 0.17f){
+            } else if(handDist > 0.14f){
                 gestureLatch = false;
             }
         }
         if(chordingEnabled){
             inputs = "";
+            averageCurlLeft = 0;
+            averageCurlRight = 0;
             //get curl values for each finger, thumbs are done separately
             for(int i = 1; i < leftDetect.tipCurls.Count; i++){
                 tipCurls[i] = leftDetect.tipCurls[i];
@@ -96,18 +101,30 @@ public class KeyboardHandler : MonoBehaviour
                 averageCurlLeft += tipCurls[i];
                 averageCurlRight += tipCurls[9-i];
             }
-            averageCurlLeft /= 5;
-            averageCurlRight /= 5;
+            averageCurlLeft /= 4;
+            averageCurlRight /= 4;
+            if(leftDetect.tipCurls[0] > 0.6f && delKey == null){
+                delKey = StartCoroutine(Backspace());
+            } else if(leftDetect.tipCurls[0] < 0.4f && delKey != null){
+                StopCoroutine(delKey);
+                delKey = null;
+            }
+            if(rightDetect.tipCurls[0] > 0.6f && !spaceKey){
+                display.text += " ";
+                spaceKey = true;
+            } else if(rightDetect.tipCurls[0] < 0.4f && spaceKey){
+                spaceKey = false;
+            }
             //two for loops is necessary to keep inputs in order
             //can be done with one if you sort the inputs after, but that's way messier
             //thought: could reformat the dictionary to have the inputs in a different order, but it's not even that big a deal to have two for loops
             for(int i = 0; i < 5; i++){
-                if(tipCurls[i] > averageCurlLeft + 0.15f){
+                if(tipCurls[i] > averageCurlLeft + 0.18f){
                     inputs += i;
                 }
             }
             for(int i = 0; i < 5; i++){
-                if(tipCurls[i+5] > averageCurlRight + 0.15f){
+                if(tipCurls[i+5] > averageCurlRight + 0.18f){
                     inputs += i+5;
                 }
             }
@@ -145,10 +162,18 @@ public class KeyboardHandler : MonoBehaviour
         debugDisplay.text += " (";
         debugDisplay.text += chordInputs;
         debugDisplay.text += ")";
-        if(chords[chordInputs] == "←"){
+        display.text += chords[chordInputs];
+    }
+
+    public IEnumerator Backspace()
+    {
+        if(display.text.Length > 0){
             display.text = display.text.Substring(0,display.text.Length - 1);
-        } else {
-            display.text += chords[chordInputs];
+        }
+        yield return new WaitForSeconds(0.4f);
+        while(display.text.Length > 0){
+            yield return new WaitForSeconds(0.05f);
+            display.text = display.text.Substring(0,display.text.Length - 1);
         }
     }
     public void Enable()
