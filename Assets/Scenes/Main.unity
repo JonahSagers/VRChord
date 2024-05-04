@@ -337,6 +337,11 @@ MonoBehaviour:
   m_GestureDetectionInterval: 0.01
   m_StaticGestures: []
   m_Highlight: {fileID: 0}
+--- !u!4 &119071717 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2733093729761800249, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6, type: 3}
+  m_PrefabInstance: {fileID: 1820806148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &291664291
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,10 +570,10 @@ MonoBehaviour:
   rightDetect: {fileID: 2118900479}
   leftFist: 0
   rightFist: 0
-  leftPos: {fileID: 1895038420}
-  rightPos: {fileID: 883055102}
+  leftPos: {fileID: 119071717}
+  rightPos: {fileID: 1511880175}
   gestureLatch: 0
-  enabled: 0
+  chordingEnabled: 0
   tipCurls:
   - 0
   - 0
@@ -580,6 +585,8 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  enterKey: 0
+  spaceKey: 0
   inputs: 
   lastChord: 
   display: {fileID: 291664293}
@@ -810,11 +817,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!4 &883055102 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2468282021181825328, guid: 3f7511fbc40ae7a4b89c3298a3de199d, type: 3}
-  m_PrefabInstance: {fileID: 1145956351}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1145956351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1109,6 +1111,11 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 773853689519989575, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6, type: 3}
   m_PrefabInstance: {fileID: 1820806148}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1511880175 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2721691953714425675, guid: 3f7511fbc40ae7a4b89c3298a3de199d, type: 3}
+  m_PrefabInstance: {fileID: 1145956351}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1517268251
 GameObject:
@@ -1632,11 +1639,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6, type: 3}
---- !u!4 &1895038420 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5876909491052011584, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6, type: 3}
-  m_PrefabInstance: {fileID: 1820806148}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1940415235
 PrefabInstance:
   m_ObjectHideFlags: 0

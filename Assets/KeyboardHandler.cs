@@ -23,6 +23,7 @@ public class KeyboardHandler : MonoBehaviour
     //this list is 10 items long to allow for thumb inputs, but for this build I handle them separately
     public List<float> tipCurls;
     public Coroutine delKey;
+    public bool enterKey;
     public bool spaceKey;
     public string inputs;
     public string lastChord;
@@ -103,17 +104,23 @@ public class KeyboardHandler : MonoBehaviour
             }
             averageCurlLeft /= 4;
             averageCurlRight /= 4;
-            if(leftDetect.tipCurls[0] > 0.6f && delKey == null){
+            if(leftDetect.tipCurls[0] > 0.7f && delKey == null){
                 delKey = StartCoroutine(Backspace());
-            } else if(leftDetect.tipCurls[0] < 0.4f && delKey != null){
+            } else if(leftDetect.tipCurls[0] < 0.5f && delKey != null){
                 StopCoroutine(delKey);
                 delKey = null;
             }
-            if(rightDetect.tipCurls[0] > 0.6f && !spaceKey){
+            if(rightDetect.tipCurls[0] > 0.7f && !spaceKey){
                 display.text += " ";
                 spaceKey = true;
-            } else if(rightDetect.tipCurls[0] < 0.4f && spaceKey){
+            } else if(rightDetect.tipCurls[0] < 0.5f && spaceKey){
                 spaceKey = false;
+            }
+            if(averageCurlLeft > 0.9f && averageCurlRight > 0.9f && !enterKey){
+                display.text += "\n";
+                enterKey = true;
+            } else if(averageCurlLeft < 0.8f || averageCurlRight < 0.8f && enterKey){
+                enterKey = false;
             }
             //two for loops is necessary to keep inputs in order
             //can be done with one if you sort the inputs after, but that's way messier
