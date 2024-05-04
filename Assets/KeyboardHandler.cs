@@ -19,7 +19,7 @@ public class KeyboardHandler : MonoBehaviour
     public Transform leftPos;
     public Transform rightPos;
     public bool gestureLatch;
-    public bool enabled;
+    public bool chordingEnabled;
     public List<float> tipCurls;
     public string inputs;
     public string lastChord;
@@ -76,7 +76,7 @@ public class KeyboardHandler : MonoBehaviour
     {
         if(leftFist && rightFist){
             if(Vector3.Distance(leftPos.position,rightPos.position) < 0.15f && !gestureLatch){
-                if(enabled){
+                if(chordingEnabled){
                     Disable();
                 } else {
                     Enable();
@@ -87,13 +87,14 @@ public class KeyboardHandler : MonoBehaviour
                 gestureLatch = false;
             }
         }
-        if(enabled){
+        if(chordingEnabled){
             inputs = "";
-            for(int i = 0; i < leftDetect.tipCurls.Count; i++){
+            //get curl values for each finger, thumbs are done separately
+            for(int i = 1; i < leftDetect.tipCurls.Count; i++){
                 tipCurls[i] = leftDetect.tipCurls[i];
-                tipCurls[i+5] = rightDetect.tipCurls[4-i];
+                tipCurls[9-i] = rightDetect.tipCurls[i];
                 averageCurlLeft += tipCurls[i];
-                averageCurlRight += tipCurls[i+5];
+                averageCurlRight += tipCurls[9-i];
             }
             averageCurlLeft /= 5;
             averageCurlRight /= 5;
@@ -123,6 +124,10 @@ public class KeyboardHandler : MonoBehaviour
             }
             if(inputs.Length == 1){
                 inputBuffer = inputs;
+                //allow for repeating a chord by only feathering one finger
+                if(lastChord != ""){
+                    lastChord = inputs;
+                }
             }
         }
     }
@@ -148,7 +153,7 @@ public class KeyboardHandler : MonoBehaviour
     }
     public void Enable()
     {
-        enabled = true;
+        chordingEnabled = true;
         debugDisplay.text = "Enabled";
         render = GameObject.Find("LeftHand").GetComponent<Renderer>();
         render.material = activeMaterial;
@@ -157,7 +162,7 @@ public class KeyboardHandler : MonoBehaviour
     }
     public void Disable()
     {
-        enabled = false;
+        chordingEnabled = false;
         debugDisplay.text = "Disabled";
         render = GameObject.Find("LeftHand").GetComponent<Renderer>();
         render.material = inertMaterial;
