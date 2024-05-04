@@ -7,54 +7,63 @@ using TMPro;
 
 public class KeyboardHandler : MonoBehaviour
 {
+    public Renderer render;
+    public Material inertMaterial;
+    public Material activeMaterial;
     public float averageCurlLeft;
     public float averageCurlRight;
     public CurlDetection leftDetect;
     public CurlDetection rightDetect;
     public bool leftFist;
     public bool rightFist;
-    //these six vars are all similar data.  Might be able to ditch one with some clever destructive uses
+    public Transform leftPos;
+    public Transform rightPos;
+    public bool gestureLatch;
+    public bool enabled;
     public List<float> tipCurls;
     public string inputs;
     public string lastChord;
     public TextMeshPro display;
+    public TextMeshPro debugDisplay;
     public string inputBuffer;
     public Dictionary<string, string> chords = new Dictionary<string, string>{
-        { "0", "a" },
-        { "1", "s" },
-        { "01", "w" },
-        { "2", "e" },
-        { "02", "x" },
-        { "12", "d" },
-        { "3", "t" },
-        { "03", "f" },
-        { "13", "c" },
-        { "23", "r" },
-        { "4", "n" },
-        { "04", "q" },
-        { "14", "j" },
-        { "24", "y" },
-        { "34", "b" },
-        { "5", "i" },
-        { "05", "z" },
-        { "15", "k" },
-        { "25", "," },
-        { "35", "v" },
-        { "45", "h" },
-        { "6", "o" },
-        { "06", "(" },
-        { "16", "." },
-        { "26", "-" },
-        { "36", "g" },
-        { "46", "u" },
-        { "56", "l" },
-        { "7", "p" },
-        { "07", "?" },
-        { "17", ")" },
-        { "37", "←" },
-        { "47", "m" },
-        { "57", "!" },
-        { "67", ";" },
+        { "1", "a" },
+        { "2", "s" },
+        { "12", "w" },
+        { "3", "e" },
+        { "13", "x" },
+        { "23", "d" },
+        { "4", "t" },
+        { "14", "f" },
+        { "24", "c" },
+        { "34", "r" },
+        { "5", "n" },
+        { "15", "q" },
+        { "25", "j" },
+        { "35", "y" },
+        { "45", "b" },
+        { "6", "i" },
+        { "16", "z" },
+        { "26", "k" },
+        { "36", "," },
+        { "46", "v" },
+        { "56", "h" },
+        { "7", "o" },
+        { "17", "(" },
+        { "27", "." },
+        { "37", "-" },
+        { "47", "g" },
+        { "57", "u" },
+        { "67", "l" },
+        { "8", "p" },
+        { "18", "?" },
+        { "28", ")" },
+        //{ "48", "←" }, default asetniop backspace
+        { "58", "m" },
+        { "68", "!" },
+        { "78", ";" },
+        { "9", " " },
+        { "0", "←" }, //added backspace
     };
     // Start is called before the first frame update
     void Start()
@@ -65,68 +74,97 @@ public class KeyboardHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        inputs = "";
-        for(int i = 0; i < leftDetect.tipCurls.Count; i++) {
-            tipCurls[i] = leftDetect.tipCurls[i];
-            tipCurls[i+5] = rightDetect.tipCurls[4-i];
-            averageCurlLeft += tipCurls[i];
-            averageCurlRight += tipCurls[i+5];
-        }
-        averageCurlLeft /= 5;
-        averageCurlRight /= 5;
-        for(int i = 0; i < 5; i++) {
-            if(tipCurls[i] > averageCurlLeft + 0.15f){
-                inputs += i;
-            }
-            if(tipCurls[i+5] > averageCurlRight + 0.15f){
-                inputs += i+5;
+        if(leftFist && rightFist){
+            if(Vector3.Distance(leftPos.position,rightPos.position) < 0.15f && !gestureLatch){
+                if(enabled){
+                    Disable();
+                } else {
+                    Enable();
+                }
+                gestureLatch = true;
+            //can avoid checking position twice if you weren't allergic to placeholder variables
+            } else if(Vector3.Distance(leftPos.position,rightPos.position) > 0.17f){
+                gestureLatch = false;
             }
         }
-        if(inputs== ""){
-            if(inputBuffer != "" && !lastChord.Contains(inputBuffer)){
-                Chord(inputBuffer);
+        if(enabled){
+            inputs = "";
+            for(int i = 0; i < leftDetect.tipCurls.Count; i++){
+                tipCurls[i] = leftDetect.tipCurls[i];
+                tipCurls[i+5] = rightDetect.tipCurls[4-i];
+                averageCurlLeft += tipCurls[i];
+                averageCurlRight += tipCurls[i+5];
             }
-            inputBuffer = "";
-            lastChord = "";
-        } else {
-            if(!lastChord.Contains(inputs) && inputs.Length > 1){
-                Chord(inputs);
+            averageCurlLeft /= 5;
+            averageCurlRight /= 5;
+            //two for loops is necessary to keep inputs in order
+            //can be done with one if you sort the inputs after, but that's way messier
+            //thought: could reformat the dictionary to have the inputs in a different order, but it's not even that big a deal to have two for loops
+            for(int i = 0; i < 5; i++){
+                if(tipCurls[i] > averageCurlLeft + 0.15f){
+                    inputs += i;
+                }
+            }
+            for(int i = 0; i < 5; i++){
+                if(tipCurls[i+5] > averageCurlRight + 0.15f){
+                    inputs += i+5;
+                }
+            }
+            if(inputs== ""){
+                if(inputBuffer != "" && !lastChord.Contains(inputBuffer) && chords.ContainsKey(inputBuffer)){
+                    Chord(inputBuffer);
+                }
+                inputBuffer = "";
+                lastChord = "";
+            } else {
+                if(!lastChord.Contains(inputs) && inputs.Length > 1 && chords.ContainsKey(inputs)){
+                    Chord(inputs);
+                }
+            }
+            if(inputs.Length == 1){
+                inputBuffer = inputs;
             }
         }
-        if(inputs.Length == 1){
-            inputBuffer = inputs;
-        }
-        // leftMax = Mathf.Max(leftTipCurls.ToArray());
-        // if(leftMax > Average(leftTipCurls) + 0.2f){
-        //     leftMaxIndex = leftTipCurls.IndexOf(leftMax);
-        // } else {
-        //     leftMaxIndex = -1;
-        //     lastChordLeft = -1;
-        // }
-        // rightMax = Mathf.Max(rightTipCurls.ToArray());
-        // if(rightMax > Average(rightTipCurls) + 0.2f){
-        //     rightMaxIndex = rightTipCurls.IndexOf(rightMax);
-        // } else {
-        //     rightMaxIndex = -1;
-        //     lastChordRight = -1;
-        // }
-        // if(leftMaxIndex > -1 && rightMaxIndex > -1 && (leftMaxIndex != lastChordLeft || rightMaxIndex != lastChordRight)){
-        //     Chord(leftMaxIndex, rightMaxIndex);
-        // }
     }
 
     void Chord(string chordInputs)
     {
         //had some pointer nonsense with this
+        //does C# even have pointers?
         lastChord = "";
         lastChord += chordInputs;
         inputBuffer = "";
         Debug.Log("Striking Chord");
-        display.text += "\nChord: ";
-        display.text += chords[chordInputs];
-        display.text += " (";
-        display.text += chordInputs;
-        display.text += ")";
+        debugDisplay.text += "\nChord: ";
+        debugDisplay.text += chords[chordInputs];
+        debugDisplay.text += " (";
+        debugDisplay.text += chordInputs;
+        debugDisplay.text += ")";
+        if(chords[chordInputs] == "←"){
+            display.text = display.text.Substring(0,display.text.Length - 1);
+        } else {
+            display.text += chords[chordInputs];
+        }
+    }
+    public void Enable()
+    {
+        enabled = true;
+        debugDisplay.text = "Enabled";
+        render = GameObject.Find("LeftHand").GetComponent<Renderer>();
+        render.material = activeMaterial;
+        render = GameObject.Find("RightHand").GetComponent<Renderer>();
+        render.material = activeMaterial;
+    }
+    public void Disable()
+    {
+        enabled = false;
+        debugDisplay.text = "Disabled";
+        render = GameObject.Find("LeftHand").GetComponent<Renderer>();
+        render.material = inertMaterial;
+        render = GameObject.Find("RightHand").GetComponent<Renderer>();
+        render.material = inertMaterial;
+        inputBuffer = "";
+        inputs = "";
     }
     public void LeftFist()
     {
