@@ -62,6 +62,9 @@ public class KeyboardHandler : MonoBehaviour
         { "8", "p" },
         { "18", "?" },
         { "28", ")" },
+        { "38", "'" },
+        //Normally, the apostrophe goes here as key 3,8 but it wasn't on the asetniop chart for some reason
+        //I added it manually, but note this in case it causes discrepancies
         //{ "48", "←" }, default asetniop backspace
         { "58", "m" },
         { "68", "!" },
