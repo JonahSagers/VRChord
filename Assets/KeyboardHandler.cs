@@ -143,15 +143,10 @@ public class KeyboardHandler : MonoBehaviour
             } else if(averageCurlLeft < 0.8f || averageCurlRight < 0.8f && enterKey){
                 enterKey = false;
             }
-            //two for loops is necessary to keep inputs in order
-            //can be done with one if you sort the inputs after, but that's way messier
-            //thought: could reformat the dictionary to have the inputs in a different order, but it's not even that big a deal to have two for loops
             for(int i = 0; i < 5; i++){
                 if(tipCurls[i] > averageCurlLeft + 0.18f){
                     inputs += i;
                 }
-            }
-            for(int i = 0; i < 5; i++){
                 if(tipCurls[i+5] > averageCurlRight + 0.18f){
                     inputs += i+5;
                 }
