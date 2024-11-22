@@ -375,6 +375,10 @@ MonoBehaviour:
   primaryDisplay: U
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &48385153
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,6 +567,10 @@ MonoBehaviour:
   primaryDisplay: Del
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &74295957
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,6 +759,10 @@ MonoBehaviour:
   primaryDisplay: C
   secondaryInputs: 26
   secondaryDisplay: K
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &106632093
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,6 +951,10 @@ MonoBehaviour:
   primaryDisplay: V
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &108331642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,6 +1293,10 @@ MonoBehaviour:
   primaryDisplay: 
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &146206288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,6 +1485,10 @@ MonoBehaviour:
   primaryDisplay: Space
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &182875983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,6 +1677,10 @@ MonoBehaviour:
   primaryDisplay: N
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &229167185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,6 +1869,10 @@ MonoBehaviour:
   primaryDisplay: '-'
   secondaryInputs: 57
   secondaryDisplay: U
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &291664291
 GameObject:
   m_ObjectHideFlags: 0
@@ -2200,6 +2232,10 @@ MonoBehaviour:
   primaryDisplay: ','
   secondaryInputs: 56
   secondaryDisplay: H
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &301237210
 GameObject:
   m_ObjectHideFlags: 0
@@ -2279,6 +2315,7 @@ MonoBehaviour:
   display: {fileID: 291664293}
   debugDisplay: {fileID: 1668168619}
   inputBuffer: 
+  altKeyboard: 0
 --- !u!1 &343065786
 GameObject:
   m_ObjectHideFlags: 0
@@ -2467,6 +2504,10 @@ MonoBehaviour:
   primaryDisplay: E
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &377330788
 GameObject:
   m_ObjectHideFlags: 0
@@ -2655,6 +2696,10 @@ MonoBehaviour:
   primaryDisplay: P
   secondaryInputs: 58
   secondaryDisplay: M
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &398392334
 GameObject:
   m_ObjectHideFlags: 0
@@ -2843,6 +2888,10 @@ MonoBehaviour:
   primaryDisplay: G
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &411319687
 GameObject:
   m_ObjectHideFlags: 0
@@ -3031,6 +3080,10 @@ MonoBehaviour:
   primaryDisplay: X
   secondaryInputs: 34
   secondaryDisplay: R
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &501240546
 GameObject:
   m_ObjectHideFlags: 0
@@ -3219,6 +3272,10 @@ MonoBehaviour:
   primaryDisplay: I
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &511633759
 GameObject:
   m_ObjectHideFlags: 0
@@ -3407,6 +3464,10 @@ MonoBehaviour:
   primaryDisplay: I
   secondaryInputs: 16
   secondaryDisplay: Z
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &551616291
 GameObject:
   m_ObjectHideFlags: 0
@@ -3595,6 +3656,10 @@ MonoBehaviour:
   primaryDisplay: '?'
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &563859824
 GameObject:
   m_ObjectHideFlags: 0
@@ -3783,6 +3848,10 @@ MonoBehaviour:
   primaryDisplay: H
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &593663488
 GameObject:
   m_ObjectHideFlags: 0
@@ -4142,6 +4211,10 @@ MonoBehaviour:
   primaryDisplay: 
   secondaryInputs: 27
   secondaryDisplay: .
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &610643589
 GameObject:
   m_ObjectHideFlags: 0
@@ -4330,6 +4403,10 @@ MonoBehaviour:
   primaryDisplay: E
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &666041037
 GameObject:
   m_ObjectHideFlags: 0
@@ -4518,6 +4595,10 @@ MonoBehaviour:
   primaryDisplay: '!'
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &705211445
 GameObject:
   m_ObjectHideFlags: 0
@@ -4706,6 +4787,10 @@ MonoBehaviour:
   primaryDisplay: S
   secondaryInputs: 23
   secondaryDisplay: D
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &706079026 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9014170783809206332, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
@@ -4943,6 +5028,10 @@ MonoBehaviour:
   primaryDisplay: B
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &797447525
 GameObject:
   m_ObjectHideFlags: 0
@@ -5131,6 +5220,10 @@ MonoBehaviour:
   primaryDisplay: J
   secondaryInputs: 45
   secondaryDisplay: B
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &852720693
 GameObject:
   m_ObjectHideFlags: 0
@@ -5319,6 +5412,10 @@ MonoBehaviour:
   primaryDisplay: .
   secondaryInputs: 47
   secondaryDisplay: G
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &891984474
 GameObject:
   m_ObjectHideFlags: 0
@@ -5507,6 +5604,10 @@ MonoBehaviour:
   primaryDisplay: )
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &940159703
 GameObject:
   m_ObjectHideFlags: 0
@@ -5695,6 +5796,10 @@ MonoBehaviour:
   primaryDisplay: K
   secondaryInputs: 46
   secondaryDisplay: V
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1030791685
 GameObject:
   m_ObjectHideFlags: 0
@@ -5883,6 +5988,10 @@ MonoBehaviour:
   primaryDisplay: 
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1031073387
 GameObject:
   m_ObjectHideFlags: 0
@@ -6071,6 +6180,10 @@ MonoBehaviour:
   primaryDisplay: O
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1058717199
 GameObject:
   m_ObjectHideFlags: 0
@@ -6259,6 +6372,10 @@ MonoBehaviour:
   primaryDisplay: F
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1059170849
 GameObject:
   m_ObjectHideFlags: 0
@@ -6447,6 +6564,10 @@ MonoBehaviour:
   primaryDisplay: P
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1164017147
 GameObject:
   m_ObjectHideFlags: 0
@@ -6635,6 +6756,10 @@ MonoBehaviour:
   primaryDisplay: ;
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1171023536
 GameObject:
   m_ObjectHideFlags: 0
@@ -6823,6 +6948,10 @@ MonoBehaviour:
   primaryDisplay: 
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1171246051
 GameObject:
   m_ObjectHideFlags: 0
@@ -7011,6 +7140,10 @@ MonoBehaviour:
   primaryDisplay: Q
   secondaryInputs: 13
   secondaryDisplay: X
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1187286708
 GameObject:
   m_ObjectHideFlags: 0
@@ -7199,6 +7332,10 @@ MonoBehaviour:
   primaryDisplay: 
   secondaryInputs: 67
   secondaryDisplay: L
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!114 &1252498228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7416,6 +7553,10 @@ MonoBehaviour:
   primaryDisplay: A
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1268022460
 GameObject:
   m_ObjectHideFlags: 0
@@ -7754,6 +7895,10 @@ MonoBehaviour:
   primaryDisplay: 
   secondaryInputs: 37
   secondaryDisplay: '-'
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1339708617
 GameObject:
   m_ObjectHideFlags: 0
@@ -7942,6 +8087,10 @@ MonoBehaviour:
   primaryDisplay: Z
   secondaryInputs: 14
   secondaryDisplay: F
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1375859211
 GameObject:
   m_ObjectHideFlags: 0
@@ -8130,6 +8279,10 @@ MonoBehaviour:
   primaryDisplay: A
   secondaryInputs: 12
   secondaryDisplay: W
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1433156880
 GameObject:
   m_ObjectHideFlags: 0
@@ -8318,6 +8471,10 @@ MonoBehaviour:
   primaryDisplay: N
   secondaryInputs: 15
   secondaryDisplay: Q
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1463786420
 GameObject:
   m_ObjectHideFlags: 0
@@ -8589,6 +8746,10 @@ MonoBehaviour:
   primaryDisplay: 
   secondaryInputs: 28
   secondaryDisplay: )
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1489656130
 GameObject:
   m_ObjectHideFlags: 0
@@ -8777,6 +8938,10 @@ MonoBehaviour:
   primaryDisplay: 
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1517268251
 GameObject:
   m_ObjectHideFlags: 0
@@ -9083,6 +9248,10 @@ MonoBehaviour:
   primaryDisplay: L
   secondaryInputs: 78
   secondaryDisplay: ;
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!114 &1525488749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9367,6 +9536,10 @@ MonoBehaviour:
   primaryDisplay: O
   secondaryInputs: 17
   secondaryDisplay: (
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1628894108
 GameObject:
   m_ObjectHideFlags: 0
@@ -9555,6 +9728,10 @@ MonoBehaviour:
   primaryDisplay: (
   secondaryInputs: 18
   secondaryDisplay: '?'
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1651178507
 GameObject:
   m_ObjectHideFlags: 0
@@ -9743,6 +9920,10 @@ MonoBehaviour:
   primaryDisplay: W
   secondaryInputs: 25
   secondaryDisplay: J
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1668168617
 GameObject:
   m_ObjectHideFlags: 0
@@ -10102,6 +10283,10 @@ MonoBehaviour:
   primaryDisplay: S
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1764711766
 GameObject:
   m_ObjectHideFlags: 0
@@ -10290,6 +10475,10 @@ MonoBehaviour:
   primaryDisplay: Y
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1797803689
 GameObject:
   m_ObjectHideFlags: 0
@@ -10649,6 +10838,10 @@ MonoBehaviour:
   primaryDisplay: ''''
   secondaryInputs: 36
   secondaryDisplay: ','
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1855095345
 GameObject:
   m_ObjectHideFlags: 0
@@ -10837,6 +11030,10 @@ MonoBehaviour:
   primaryDisplay: D
   secondaryInputs: 35
   secondaryDisplay: Y
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1001 &1940415235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10853,6 +11050,10 @@ PrefabInstance:
       propertyPath: m_RightHand
       value: 
       objectReference: {fileID: 3133494151401459365}
+    - target: {fileID: 3471343859196315090, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10893,9 +11094,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6592162360964517271, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7313654230448209575, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_Name
       value: XR Interaction Setup
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014170783705847997, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014170785475729474, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11107,6 +11320,10 @@ MonoBehaviour:
   primaryDisplay: T
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &1962055923
 GameObject:
   m_ObjectHideFlags: 0
@@ -11295,6 +11512,10 @@ MonoBehaviour:
   primaryDisplay: 
   secondaryInputs: 37
   secondaryDisplay: '-'
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &2030328669
 GameObject:
   m_ObjectHideFlags: 0
@@ -11483,6 +11704,10 @@ MonoBehaviour:
   primaryDisplay: M
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &2061938537
 GameObject:
   m_ObjectHideFlags: 0
@@ -11724,6 +11949,10 @@ MonoBehaviour:
   primaryDisplay: R
   secondaryInputs: 
   secondaryDisplay: 
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &2116090071
 GameObject:
   m_ObjectHideFlags: 0
@@ -11912,6 +12141,10 @@ MonoBehaviour:
   primaryDisplay: T
   secondaryInputs: 24
   secondaryDisplay: C
+  altPrimaryInputs: 
+  altPrimaryDisplay: 
+  altSecondaryInputs: 
+  altSecondaryDisplay: 
 --- !u!1 &2118900476
 GameObject:
   m_ObjectHideFlags: 0

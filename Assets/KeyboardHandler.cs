@@ -30,6 +30,7 @@ public class KeyboardHandler : MonoBehaviour
     public TextMeshPro display;
     public TextMeshPro debugDisplay;
     public string inputBuffer;
+    public bool altKeyboard;
     public Dictionary<string, string> chords = new Dictionary<string, string>{
         { "1", "a" },
         { "2", "s" },
@@ -72,6 +73,18 @@ public class KeyboardHandler : MonoBehaviour
         { "9", " " },
         { "0", "←" }, //added backspace
     };
+    public Dictionary<string, string> altChords = new Dictionary<string, string>{
+        { "1", "1" },
+        { "2", "2" },
+        { "3", "3" },
+        { "4", "4" },
+        { "12", "5" },
+        { "23", "6" },
+        { "34", "7" },
+        { "14", "8" },
+        { "13", "9" },
+        { "24", "0" }
+    };
     // Start is called before the first frame update
     void Start()
     {
@@ -107,9 +120,14 @@ public class KeyboardHandler : MonoBehaviour
             }
             averageCurlLeft /= 4;
             averageCurlRight /= 4;
-            if(leftDetect.tipCurls[0] > 0.7f && delKey == null){
+            if(leftDetect.tipCurls[0] > 0.7f){
+                altKeyboard = true;
+            } else if(leftDetect.tipCurls[0] < 0.5f){
+                altKeyboard = false;
+            }
+            if(altKeyboard && rightDetect.tipCurls[0] > 0.7f && delKey == null){
                 delKey = StartCoroutine(Backspace());
-            } else if(leftDetect.tipCurls[0] < 0.5f && delKey != null){
+            } else if((!altKeyboard || rightDetect.tipCurls[0] < 0.5f) && delKey != null){
                 StopCoroutine(delKey);
                 delKey = null;
             }
@@ -139,13 +157,13 @@ public class KeyboardHandler : MonoBehaviour
                 }
             }
             if(inputs== ""){
-                if(inputBuffer != "" && !lastChord.Contains(inputBuffer) && chords.ContainsKey(inputBuffer)){
+                if(inputBuffer != "" && !lastChord.Contains(inputBuffer) && (chords.ContainsKey(inputBuffer) || altChords.ContainsKey(inputBuffer))){
                     Chord(inputBuffer);
                 }
                 inputBuffer = "";
                 lastChord = "";
             } else {
-                if(!lastChord.Contains(inputs) && inputs.Length > 1 && chords.ContainsKey(inputs)){
+                if(!lastChord.Contains(inputs) && inputs.Length > 1 && (chords.ContainsKey(inputs) || altChords.ContainsKey(inputs))){
                     Chord(inputs);
                 }
             }
@@ -161,18 +179,16 @@ public class KeyboardHandler : MonoBehaviour
 
     void Chord(string chordInputs)
     {
-        //had some pointer nonsense with this
-        //does C# even have pointers?
         lastChord = "";
         lastChord += chordInputs;
         inputBuffer = "";
         Debug.Log("Striking Chord");
         debugDisplay.text = "\nChord: ";
-        debugDisplay.text += chords[chordInputs];
+        debugDisplay.text += (altKeyboard) ? altChords[chordInputs] : chords[chordInputs];
         debugDisplay.text += " (";
         debugDisplay.text += chordInputs;
         debugDisplay.text += ")";
-        display.text += chords[chordInputs];
+        display.text += (altKeyboard) ? altChords[chordInputs] : chords[chordInputs];
     }
 
     public IEnumerator Backspace()
