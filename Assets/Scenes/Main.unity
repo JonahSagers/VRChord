@@ -437,7 +437,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Del
+  m_text: Alt
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -564,7 +564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primaryInputs: 0
-  primaryDisplay: Del
+  primaryDisplay: Alt
   secondaryInputs: 
   secondaryDisplay: 
   altPrimaryInputs: 
@@ -759,8 +759,8 @@ MonoBehaviour:
   primaryDisplay: C
   secondaryInputs: 26
   secondaryDisplay: K
-  altPrimaryInputs: 
-  altPrimaryDisplay: 
+  altPrimaryInputs: 24
+  altPrimaryDisplay: 0
   altSecondaryInputs: 
   altSecondaryDisplay: 
 --- !u!1 &106632093
@@ -1485,8 +1485,8 @@ MonoBehaviour:
   primaryDisplay: Space
   secondaryInputs: 
   secondaryDisplay: 
-  altPrimaryInputs: 
-  altPrimaryDisplay: 
+  altPrimaryInputs: 9
+  altPrimaryDisplay: Del
   altSecondaryInputs: 
   altSecondaryDisplay: 
 --- !u!1 &182875983
@@ -3080,10 +3080,10 @@ MonoBehaviour:
   primaryDisplay: X
   secondaryInputs: 34
   secondaryDisplay: R
-  altPrimaryInputs: 
-  altPrimaryDisplay: 
-  altSecondaryInputs: 
-  altSecondaryDisplay: 
+  altPrimaryInputs: 34
+  altPrimaryDisplay: 7
+  altSecondaryInputs: 13
+  altSecondaryDisplay: 9
 --- !u!1 &501240546
 GameObject:
   m_ObjectHideFlags: 0
@@ -4403,10 +4403,10 @@ MonoBehaviour:
   primaryDisplay: E
   secondaryInputs: 
   secondaryDisplay: 
-  altPrimaryInputs: 
-  altPrimaryDisplay: 
-  altSecondaryInputs: 
-  altSecondaryDisplay: 
+  altPrimaryInputs: 3
+  altPrimaryDisplay: 3
+  altSecondaryInputs: 23
+  altSecondaryDisplay: 6
 --- !u!1 &666041037
 GameObject:
   m_ObjectHideFlags: 0
@@ -4787,10 +4787,10 @@ MonoBehaviour:
   primaryDisplay: S
   secondaryInputs: 23
   secondaryDisplay: D
-  altPrimaryInputs: 
-  altPrimaryDisplay: 
-  altSecondaryInputs: 
-  altSecondaryDisplay: 
+  altPrimaryInputs: 2
+  altPrimaryDisplay: 2
+  altSecondaryInputs: 12
+  altSecondaryDisplay: 5
 --- !u!1 &706079026 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9014170783809206332, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
@@ -6372,10 +6372,10 @@ MonoBehaviour:
   primaryDisplay: F
   secondaryInputs: 
   secondaryDisplay: 
-  altPrimaryInputs: 
-  altPrimaryDisplay: 
-  altSecondaryInputs: 
-  altSecondaryDisplay: 
+  altPrimaryInputs: 14
+  altPrimaryDisplay: 8
+  altSecondaryInputs: 24
+  altSecondaryDisplay: 0
 --- !u!1 &1059170849
 GameObject:
   m_ObjectHideFlags: 0
@@ -7140,8 +7140,8 @@ MonoBehaviour:
   primaryDisplay: Q
   secondaryInputs: 13
   secondaryDisplay: X
-  altPrimaryInputs: 
-  altPrimaryDisplay: 
+  altPrimaryInputs: 12
+  altPrimaryDisplay: 5
   altSecondaryInputs: 
   altSecondaryDisplay: 
 --- !u!1 &1187286708
@@ -8087,8 +8087,8 @@ MonoBehaviour:
   primaryDisplay: Z
   secondaryInputs: 14
   secondaryDisplay: F
-  altPrimaryInputs: 
-  altPrimaryDisplay: 
+  altPrimaryInputs: 13
+  altPrimaryDisplay: 9
   altSecondaryInputs: 
   altSecondaryDisplay: 
 --- !u!1 &1375859211
@@ -8279,10 +8279,10 @@ MonoBehaviour:
   primaryDisplay: A
   secondaryInputs: 12
   secondaryDisplay: W
-  altPrimaryInputs: 
-  altPrimaryDisplay: 
-  altSecondaryInputs: 
-  altSecondaryDisplay: 
+  altPrimaryInputs: 1
+  altPrimaryDisplay: 1
+  altSecondaryInputs: 14
+  altSecondaryDisplay: 8
 --- !u!1 &1433156880
 GameObject:
   m_ObjectHideFlags: 0
@@ -9920,8 +9920,8 @@ MonoBehaviour:
   primaryDisplay: W
   secondaryInputs: 25
   secondaryDisplay: J
-  altPrimaryInputs: 
-  altPrimaryDisplay: 
+  altPrimaryInputs: 23
+  altPrimaryDisplay: 6
   altSecondaryInputs: 
   altSecondaryDisplay: 
 --- !u!1 &1668168617
@@ -12141,10 +12141,10 @@ MonoBehaviour:
   primaryDisplay: T
   secondaryInputs: 24
   secondaryDisplay: C
-  altPrimaryInputs: 
-  altPrimaryDisplay: 
-  altSecondaryInputs: 
-  altSecondaryDisplay: 
+  altPrimaryInputs: 4
+  altPrimaryDisplay: 4
+  altSecondaryInputs: 34
+  altSecondaryDisplay: 7
 --- !u!1 &2118900476
 GameObject:
   m_ObjectHideFlags: 0
