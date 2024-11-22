@@ -50,7 +50,7 @@ namespace UnityEngine.XR.Hands.Samples.Gestures.DebugTools
         {
             var shapes = fingerShapes[fingerIndex];
             if (shapes.TryGetFullCurl(out var tipCurl)){
-                tipCurls[fingerIndex] = tipCurl;
+                tipCurls[(fingerIndex > 0) ? 5-fingerIndex : 0] = tipCurl;
             }
                 // if (shapes.TryGetBaseCurl(out var baseCurl))
                 //     graph.SetFingerShape((int)XRFingerShapeType.BaseCurl, baseCurl);

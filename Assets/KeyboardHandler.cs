@@ -167,7 +167,7 @@ public class KeyboardHandler : MonoBehaviour
         lastChord += chordInputs;
         inputBuffer = "";
         Debug.Log("Striking Chord");
-        debugDisplay.text += "\nChord: ";
+        debugDisplay.text = "\nChord: ";
         debugDisplay.text += chords[chordInputs];
         debugDisplay.text += " (";
         debugDisplay.text += chordInputs;

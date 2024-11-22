@@ -6,17 +6,26 @@ using TMPro;
 public class KeyIndicator : MonoBehaviour
 {
     private KeyboardHandler keyboard;
-    private TextMeshPro text;
-    public string targetInputs;
+    private TextMeshPro display;
+    public string primaryInputs;
+    public string primaryDisplay;
+    public string secondaryInputs;
+    public string secondaryDisplay;
 
     void Start()
     {
         keyboard = GameObject.Find("Gesture Tracker").GetComponent<KeyboardHandler>();
-        text = GetComponent<TextMeshPro>();
+        display = GetComponent<TextMeshPro>();
     }
 
     void Update()
     {
-        text.enabled = targetInputs.Contains(keyboard.inputBuffer) && keyboard.chordingEnabled;
+            if(primaryInputs.Contains(keyboard.inputs) && keyboard.chordingEnabled){
+                display.text = primaryDisplay;
+            } else if(secondaryInputs.Contains(keyboard.inputs) && keyboard.chordingEnabled){
+                display.text = secondaryDisplay;
+            } else {
+                display.text = "";
+            }
     }
 }
