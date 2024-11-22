@@ -131,10 +131,10 @@ public class KeyboardHandler : MonoBehaviour
                 StopCoroutine(delKey);
                 delKey = null;
             }
-            if(rightDetect.tipCurls[0] > 0.7f && !spaceKey){
+            if(!altKeyboard && rightDetect.tipCurls[0] > 0.7f && !spaceKey){
                 display.text += " ";
                 spaceKey = true;
-            } else if(rightDetect.tipCurls[0] < 0.5f && spaceKey){
+            } else if(altKeyboard || rightDetect.tipCurls[0] < 0.5f && spaceKey){
                 spaceKey = false;
             }
             if(averageCurlLeft > 0.9f && averageCurlRight > 0.9f && !enterKey){
