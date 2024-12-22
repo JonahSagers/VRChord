@@ -7,6 +7,8 @@ using TMPro;
 
 public class KeyboardHandler : MonoBehaviour
 {
+    public GameObject selected;
+    public TextMeshPro selectedText;
     public Renderer render;
     public Material inertMaterial;
     public Material activeMaterial;
@@ -16,6 +18,10 @@ public class KeyboardHandler : MonoBehaviour
     public CurlDetection rightDetect;
     public bool leftFist;
     public bool rightFist;
+    public bool leftPoint;
+    public bool rightPoint;
+    public LineRenderer leftLine;
+    public LineRenderer rightLine;
     public Transform leftPos;
     public Transform rightPos;
     public bool gestureLatch;
@@ -184,6 +190,9 @@ public class KeyboardHandler : MonoBehaviour
         debugDisplay.text += chordInputs;
         debugDisplay.text += ")";
         display.text += (altKeyboard) ? altChords[chordInputs] : chords[chordInputs];
+        if(selectedText != null){
+            selectedText.text += (altKeyboard) ? altChords[chordInputs] : chords[chordInputs];
+        }
     }
 
     public IEnumerator Backspace()
@@ -191,10 +200,18 @@ public class KeyboardHandler : MonoBehaviour
         if(display.text.Length > 0){
             display.text = display.text.Substring(0,display.text.Length - 1);
         }
+        if(selectedText != null && selectedText.text.Length > 0){
+            selectedText.text = selectedText.text.Substring(0,selectedText.text.Length - 1);
+        }
         yield return new WaitForSeconds(0.4f);
-        while(display.text.Length > 0){
+        while(display.text.Length > 0 || (selectedText != null && selectedText.text.Length > 0)){
             yield return new WaitForSeconds(0.05f);
-            display.text = display.text.Substring(0,display.text.Length - 1);
+            if(display.text.Length > 0){
+                display.text = display.text.Substring(0,display.text.Length - 1);
+            }
+            if(selectedText.text.Length > 0){
+                selectedText.text = selectedText.text.Substring(0,selectedText.text.Length - 1);
+            }
         }
     }
     public void Enable()
@@ -208,6 +225,9 @@ public class KeyboardHandler : MonoBehaviour
     }
     public void Disable()
     {
+        selected.GetComponent<Outline>().enabled = false;
+        selected = null;
+        selectedText = null;
         chordingEnabled = false;
         debugDisplay.text = "Disabled";
         render = GameObject.Find("LeftHand").GetComponent<Renderer>();
@@ -232,5 +252,36 @@ public class KeyboardHandler : MonoBehaviour
     public void RightFistEnd()
     {
         rightFist = false;
+    }
+    public void LeftPoint()
+    {
+        leftPoint = true;
+        if(!rightPoint){
+            leftLine.enabled = true;
+        }
+    }
+    public void LeftPointEnd()
+    {
+        leftPoint = false;
+        if(leftLine.enabled){
+            leftLine.enabled = false;
+            Enable();
+        }
+        
+    }
+    public void RightPoint()
+    {
+        rightPoint = true;
+        if(!leftPoint){
+            rightLine.enabled = true;
+        }
+    }
+    public void RightPointEnd()
+    {
+        rightPoint = false;
+        if(rightLine.enabled){
+            rightLine.enabled = false;
+            Enable();
+        }
     }
 }
