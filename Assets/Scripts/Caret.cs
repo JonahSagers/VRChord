@@ -13,7 +13,7 @@ public class Caret : MonoBehaviour
         float elapsed = 0;
         while(true){
             if(display.text.Length < 1){
-                transform.localPosition = new Vector3(-3.482394f,1.577121f,0f);
+                transform.localPosition = new Vector3(-3.482394f,1.7f,0f);
             } else {
                 TMP_TextInfo textInfo = display.textInfo;
                 TMP_CharacterInfo charInfo;
