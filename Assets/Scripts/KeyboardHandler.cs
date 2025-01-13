@@ -139,6 +139,9 @@ public class KeyboardHandler : MonoBehaviour
             }
             if(!altKeyboard && rightDetect.tipCurls[0] > 0.7f && !spaceKey){
                 display.text += " ";
+                if(selectedText != null){
+                    selectedText.text += " ";
+                }
                 spaceKey = true;
             } else if(altKeyboard || rightDetect.tipCurls[0] < 0.5f && spaceKey){
                 spaceKey = false;
