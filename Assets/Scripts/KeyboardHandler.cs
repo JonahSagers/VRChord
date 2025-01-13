@@ -214,7 +214,7 @@ public class KeyboardHandler : MonoBehaviour
             if(display.text.Length > 0){
                 display.text = display.text.Substring(0,display.text.Length - 1);
             }
-            if(selectedText.text.Length > 0){
+            if(selectedText != null && selectedText.text.Length > 0){
                 selectedText.text = selectedText.text.Substring(0,selectedText.text.Length - 1);
             }
         }
